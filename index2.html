@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNLEFT LLC | Powering Digital Possibilities</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Sansation:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom fonts setup */
+      .font-moonscape {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+
+      .font-audiowide {
+        font-family: "Audiowide", cursive;
+      }
+
+      .font-sansation {
+        font-family: "Sansation", sans-serif;
+      }
+
+      /* Hero section styling */
+      .hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
+
+      .hero-overlay {
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      /* Loading screen styling */
+      .loader {
+        --size: 250px;
+        --duration: 2s;
+        --logo-color: grey;
+        --background: linear-gradient(
+          0deg,
+          rgba(50, 50, 50, 0.2) 0%,
+          rgba(100, 100, 100, 0.2) 100%
+        );
+        height: var(--size);
+        aspect-ratio: 1;
+        position: relative;
+      }
+
+      .loader .box {
+        position: absolute;
+        background: rgba(100, 100, 100, 0.15);
+        background: var(--background);
+        border-radius: 50%;
+        border-top: 1px solid rgba(100, 100, 100, 1);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+        backdrop-filter: blur(5px);
+        animation: ripple var(--duration) infinite ease-in-out;
+      }
+
+      .loader .box:nth-child(1) {
+        inset: 40%;
+        z-index: 99;
+        background-color: azure;
+      }
+
+      .loader .box:nth-child(2) {
+        inset: 30%;
+        z-index: 98;
+        border-color: rgba(100, 100, 100, 0.8);
+        animation-delay: 0.2s;
+      }
+
+      .loader .box:nth-child(3) {
+        inset: 20%;
+        z-index: 97;
+        border-color: rgba(100, 100, 100, 0.6);
+        animation-delay: 0.4s;
+      }
+
+      .loader .box:nth-child(4) {
+        inset: 10%;
+        z-index: 96;
+        border-color: rgba(100, 100, 100, 0.4);
+        animation-delay: 0.6s;
+      }
+
+      .loader .box:nth-child(5) {
+        inset: 0%;
+        z-index: 95;
+        border-color: rgba(100, 100, 100, 0.2);
+        animation-delay: 0.8s;
+      }
+
+      .loader .logo {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        /* padding: 30%; */
+      }
+
+      @keyframes ripple {
+        0% {
+          transform: scale(1);
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+        }
+        50% {
+          transform: scale(1.3);
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 20px -0px;
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+        }
+      }
+
+      @keyframes color-change {
+        0% {
+          fill: var(--logo-color);
+        }
+        50% {
+          fill: white;
+        }
+        100% {
+          fill: var(--logo-color);
+        }
+      }
+
+      /* Loading screen container */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0a0a0a;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      /* Custom button styles */
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Navbar styling */
+      .navbar {
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Starry background */
+      #starry-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+        background-color: black;
+      }
+
+      .star {
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        pointer-events: none;
+        transition: transform 0.2s ease-out;
+      }
+
+      /* Section styling with starry background */
+      .section-with-stars {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Team section - Bento grid for desktop, stacking for mobile */
+      .team-bento-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .team-member-card {
+        background: rgba(30, 30, 40, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .team-member-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(102, 126, 234, 0.5);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+      }
+
+      /* Bento grid positioning for desktop */
+      @media (min-width: 768px) {
+        .team-bento-grid .team-member-card:nth-child(1) {
+          grid-column: 1 / 3;
+          grid-row: 1;
+        }
+        .team-bento-grid .team-member-card:nth-child(2) {
+          grid-column: 3 / 5;
+          grid-row: 1;
+        }
+        .team-bento-grid .team-member-card:nth-child(3) {
+          grid-column: 1 / 2;
+          grid-row: 2;
+        }
+        .team-bento-grid .team-member-card:nth-child(4) {
+          grid-column: 2 / 4;
+          grid-row: 2;
+        }
+        .team-bento-grid .team-member-card:nth-child(5) {
+          grid-column: 4 / 5;
+          grid-row: 2;
+        }
+        .team-bento-grid .team-member-card:nth-child(6) {
+          grid-column: 1 / 3;
+          grid-row: 3;
+        }
+        .team-bento-grid .team-member-card:nth-child(7) {
+          grid-column: 3 / 5;
+          grid-row: 3;
+        }
+      }
+
+      /* Stacking for mobile */
+      @media (max-width: 767px) {
+        .team-bento-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      /* Stats cards styling */
+      .stat-card {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      /* Project cards */
+      .project-card {
+        background: rgba(30, 30, 40, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(102, 126, 234, 0.5);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+      }
+
+      /* Service cards */
+      .service-card {
+        background: rgba(30, 30, 40, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 2rem;
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(102, 126, 234, 0.5);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+      }
+
+      /* Contact form */
+      .contact-input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        color: white;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .contact-input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+      }
+
+      /* Footer styling */
+      .footer-link {
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.3s ease;
+      }
+
+      .footer-link:hover {
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="font-sansation bg-gray-900 text-white">
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loader">
+        <div class="box">
+          <div class="logo">
+            <img src="unleft.png" alt="logo" />
+          </div>
+        </div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+
+    <!-- Starry Background -->
+    <div id="starry-background"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 left-0 w-full z-50 py-4 px-6 md:px-12">
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a
+            href="#"
+            class="font-audiowide text-2xl md:text-3xl text-white tracking-wider"
+            >UNLEFT LLC</a
+          >
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Services</a
+          >
+          <a
+            href="#projects"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Projects</a
+          >
+          <a
+            href="#team"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Team</a
+          >
+          <a
+            href="#contact"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Contact</a
+          >
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-button" class="md:hidden text-white">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+        <div class="flex flex-col space-y-4">
+          <a
+            href="#home"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Services</a
+          >
+          <a
+            href="#projects"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Projects</a
+          >
+          <a
+            href="#team"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Team</a
+          >
+          <a
+            href="#contact"
+            class="font-sansation text-gray-300 hover:text-white transition-colors duration-300"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen pt-24 md:pt-28 flex items-center justify-center overflow-hidden"
+    >
+      <!-- Background Video -->
+      <video autoplay muted playsinline class="hero-video" id="hero-video">
+        <!-- Fallback video (placeholder) -->
+        <source src="earth.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Overlay -->
+      <div class="hero-overlay absolute inset-0"></div>
+
+      <!-- Hero Content -->
+      <div class="container mx-auto px-6 md:px-12 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <!-- Left Column -->
+          <div class="lg:w-1/2 mb-12 lg:mb-0">
+            <div class="mb-6">
+              <h1
+                class="font-moonscape text-4xl md:text-6xl lg:text-7xl text-white mb-4 leading-tight"
+              >
+                Powering Digital Possibilities
+              </h1>
+              <p
+                class="font-sansation text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl"
+              >
+                We build websites, platforms, and solutions for businesses that
+                grow.
+              </p>
+              <div
+                class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6"
+              >
+                <a
+                  href="#contact"
+                  class="btn-primary py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white text-center"
+                >
+                  Get Started
+                </a>
+                <a
+                  href="#projects"
+                  class="btn-secondary py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white text-center"
+                >
+                  View Projects
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="lg:w-1/2">
+            <div
+              class="bg-gradient-to-br from-gray-900/80 to-purple-900/30 backdrop-blur-lg rounded-xl p-8 border border-gray-700/50 shadow-2xl"
+            >
+              <h2 class="font-moonscape text-2xl md:text-3xl text-white mb-6">
+                Powering digital possibilities through innovative web solutions
+                and cutting-edge technology.
+              </h2>
+              <p class="font-sansation text-gray-300 mb-6">
+                UNLEFT LLC specializes in creating custom digital experiences
+                that drive business growth. Our team of expert developers,
+                designers, and strategists work together to deliver solutions
+                that exceed expectations.
+              </p>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gray-800/50 rounded-lg p-4">
+                  <h3 class="font-moonscape text-lg text-white mb-2">
+                    Web Development
+                  </h3>
+                  <p class="font-sansation text-sm text-gray-300">
+                    Custom websites & web apps
+                  </p>
+                </div>
+                <div class="bg-gray-800/50 rounded-lg p-4">
+                  <h3 class="font-moonscape text-lg text-white mb-2">
+                    Digital Platforms
+                  </h3>
+                  <p class="font-sansation text-sm text-gray-300">
+                    Scalable business platforms
+                  </p>
+                </div>
+                <div class="bg-gray-800/50 rounded-lg p-4">
+                  <h3 class="font-moonscape text-lg text-white mb-2">
+                    E-commerce
+                  </h3>
+                  <p class="font-sansation text-sm text-gray-300">
+                    Online stores & marketplaces
+                  </p>
+                </div>
+                <div class="bg-gray-800/50 rounded-lg p-4">
+                  <h3 class="font-moonscape text-lg text-white mb-2">
+                    Mobile Solutions
+                  </h3>
+                  <p class="font-sansation text-sm text-gray-300">
+                    Responsive & mobile-first
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-with-stars py-20 px-6 md:px-12">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-6">
+            Who We Are
+          </h2>
+          <div class="max-w-3xl mx-auto">
+            <p class="font-sansation text-xl text-gray-300 mb-8">
+              UNLEFT LLC is a forward-thinking software development company that transforms ideas into digital reality.
+            </p>
+            <p class="font-sansation text-lg text-gray-300 mb-12">
+              We specialize in creating innovative web solutions that drive business growth and enhance user experiences.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <!-- Mission & Vision -->
+          <div>
+            <div class="bg-gray-800/50 rounded-xl p-8 mb-8">
+              <h3 class="font-moonscape text-2xl text-white mb-4">Our Mission</h3>
+              <p class="font-sansation text-gray-300">
+                Our mission is to empower businesses with cutting-edge technology solutions while maintaining the highest standards of quality, security, and performance.
+              </p>
+            </div>
+            <div class="bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-8">
+              <h3 class="font-moonscape text-2xl text-white mb-4">Our Vision</h3>
+              <p class="font-sansation text-gray-300">
+                To be the leading digital solutions provider that bridges the gap between innovative technology and business success, creating lasting impact in the digital landscape.
+              </p>
+            </div>
+          </div>
+
+          <!-- Portfolio & Stats -->
+          <div>
+            <div class="bg-gray-800/50 rounded-xl p-8 mb-8">
+              <h3 class="font-moonscape text-2xl text-white mb-4">Our Platforms</h3>
+              <p class="font-sansation text-gray-300 mb-6">
+                As a parent company, we've successfully launched and manage multiple digital platforms, including mrbikebd.com and wishmaker.shop, showcasing our ability to build and scale diverse online businesses.
+              </p>
+              <a href="#projects" class="inline-flex items-center text-purple-400 hover:text-purple-300">
+                <span class="font-sansation font-bold">Explore Our Projects</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="stat-card">
+                <div class="font-moonscape text-4xl text-white mb-2">7</div>
+                <div class="font-sansation text-gray-300">Developers</div>
+              </div>
+              <div class="stat-card">
+                <div class="font-moonscape text-4xl text-white mb-2">2+</div>
+                <div class="font-sansation text-gray-300">Active Platforms</div>
+              </div>
+              <div class="stat-card">
+                <div class="font-moonscape text-4xl text-white mb-2">100%</div>
+                <div class="font-sansation text-gray-300">User Focus</div>
+              </div>
+              <div class="stat-card">
+                <div class="font-moonscape text-4xl text-white mb-2">24/7</div>
+                <div class="font-sansation text-gray-300">Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="#services" class="btn-primary inline-flex items-center py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white">
+            Learn More
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-with-stars py-20 px-6 md:px-12 bg-gray-900/50">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">Our Services</h2>
+          <p class="font-sansation text-xl text-gray-300 max-w-2xl mx-auto">
+            We offer comprehensive digital solutions to help your business thrive in the modern marketplace.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div class="service-card">
+            <div class="mb-6">
+              <h3 class="font-moonscape text-2xl text-white mb-4">Web Development</h3>
+              <p class="font-sansation text-gray-300 mb-6">
+                Custom websites and web applications built with modern technologies, responsive design, and optimal performance.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">React & Next.js</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Full-Stack Solutions</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Mobile Responsive</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">SEO Optimized</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card">
+            <div class="mb-6">
+              <h3 class="font-moonscape text-2xl text-white mb-4">Website Management</h3>
+              <p class="font-sansation text-gray-300 mb-6">
+                Comprehensive website maintenance, updates, security monitoring, and performance optimization services.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">24/7 Monitoring</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Security Updates</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Performance Optimization</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Content Management</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card">
+            <div class="mb-6">
+              <h3 class="font-moonscape text-2xl text-white mb-4">Business Email Solutions</h3>
+              <p class="font-sansation text-gray-300 mb-6">
+                Professional email setup, domain configuration, and secure communication solutions for your business.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Domain Email Setup</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Security Configuration</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Migration Services</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  <span class="font-sansation text-gray-300">Ongoing Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-with-stars py-20 px-6 md:px-12">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">Highlighted Projects</h2>
+          <p class="font-sansation text-xl text-gray-300 max-w-2xl mx-auto">
+            Explore our flagship platforms that demonstrate our expertise in building scalable, user-focused digital solutions.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="p-8">
+              <h3 class="font-moonscape text-2xl text-white mb-4">mrbikebd.com</h3>
+              <p class="font-sansation text-gray-300 mb-6">
+                A comprehensive bike information platform designed specifically for Bangladeshi users, featuring detailed bike reviews, specifications, and community discussions.
+              </p>
+              <div class="mb-6">
+                <h4 class="font-moonscape text-lg text-white mb-3">Technologies Used:</h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">React</span>
+                  <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">Node.js</span>
+                  <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm">MongoDB</span>
+                  <span class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-sm">Responsive Design</span>
+                </div>
+              </div>
+              <a href="https://mrbikebd.com" target="_blank" class="inline-flex items-center text-purple-400 hover:text-purple-300">
+                <span class="font-sansation font-bold">Visit Website</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="p-8">
+              <h3 class="font-moonscape text-2xl text-white mb-4">wishmaker.shop</h3>
+              <p class="font-sansation text-gray-300 mb-6">
+                A personalized message delivery platform for special occasions like birthdays, anniversaries, and Valentine's Day, connecting hearts through meaningful messages.
+              </p>
+              <div class="mb-6">
+                <h4 class="font-moonscape text-lg text-white mb-3">Technologies Used:</h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">Next.js</span>
+                  <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">TypeScript</span>
+                  <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm">Stripe</span>
+                  <span class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-sm">Email API</span>
+                </div>
+              </div>
+              <a href="https://wishmaker.shop" target="_blank" class="inline-flex items-center text-purple-400 hover:text-purple-300">
+                <span class="font-sansation font-bold">Visit Website</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="#contact" class="btn-secondary inline-flex items-center py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white">
+            View All Projects
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section-with-stars py-20 px-6 md:px-12 bg-gray-900/50">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">Meet Our Team</h2>
+          <p class="font-sansation text-xl text-gray-300 max-w-2xl mx-auto">
+            Our talented team of 7 developers brings diverse skills and experience to every project.
+          </p>
+        </div>
+
+        <!-- Bento Grid for Desktop / Stacking for Mobile -->
+        <div class="team-bento-grid">
+          <!-- Team Member 1 -->
+          <div class="team-member-card">
+            <h3 class="font-moonscape text-xl text-white mb-2">Golam Rasul</h3>
+            <p class="font-sansation text-purple-400 mb-4">Chairperson</p>
+            <p class="font-sansation text-gray-300 mb-4">Leads Board, ensures vision & compliance.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Python</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Ruby</span>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-member-card">
+            <h3 class="font-moonscape text-xl text-white mb-2">Sayma Ferdousi Fariha</h3>
+            <p class="font-sansation text-purple-400 mb-4">Managing Director</p>
+            <p class="font-sansation text-gray-300 mb-4">Aligns with investors & stakeholders.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Python</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Django</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Database</span>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-member-card">
+            <h3 class="font-moonscape text-xl text-white mb-2">Mahtabul Al Nahian</h3>
+            <p class="font-sansation text-purple-400 mb-4">Chief Operating Officer</p>
+            <p class="font-sansation text-gray-300 mb-4">Manages internal operations.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">JavaScript</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Figma</span>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="team-member-card">
+            <h3 class="font-moonscape text-xl text-white mb-2">Nabila Rahman Rodela</h3>
+            <p class="font-sansation text-purple-400 mb-4">Chief Marketing Officer</p>
+            <p class="font-sansation text-gray-300 mb-4">Leads marketing and branding.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">SQL</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">SEO</span>
+            </div>
+          </div>
+
+          <!-- Team Member 5 -->
+          <div class="team-member-card">
+            <h3 class="font-moonscape text-xl text-white mb-2">Tafrim Ahmed</h3>
+            <p class="font-sansation text-purple-400 mb-4">Chief Logic Operator</p>
+            <p class="font-sansation text-gray-300 mb-4">Ensures reliability with robust mathematical and logical programming.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">JavaScript</span>
+            </div>
+          </div>
+
+          <!-- Team Member 6 -->
+          <div class="team-member-card">
+            <h3 class="font-moonscape text-xl text-white mb-2">Al Imran Atik</h3>
+            <p class="font-sansation text-purple-400 mb-4">Executive Controlling Officer</p>
+            <p class="font-sansation text-gray-300 mb-4">Automates delivery pipelines and infrastructure at scale.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">JavaScript</span>
+            </div>
+          </div>
+
+          <!-- Team Member 7 -->
+          <div class="team-member-card">
+            <h3 class="font-moonscape text-xl text-white mb-2">Golam Morshed Eashan</h3>
+            <p class="font-sansation text-purple-400 mb-4">Executive Controlling Officer</p>
+            <p class="font-sansation text-gray-300 mb-4">Controls entire operation, ultimate decision maker.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Python</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Django</span>
+              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">C#</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-with-stars py-20 px-6 md:px-12">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">Have a Project in Mind?</h2>
+          <p class="font-sansation text-xl text-gray-300 max-w-2xl mx-auto">
+            Let's transform your ideas into reality. Our team is ready to bring your vision to life with cutting-edge technology and innovative solutions.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Info -->
+            <div>
+              <div class="bg-gray-800/50 rounded-xl p-8 mb-8">
+                <h3 class="font-moonscape text-2xl text-white mb-6">Get in Touch</h3>
+                <div class="space-y-6">
+                  <div class="flex items-start">
+                    <div class="bg-purple-900/30 p-3 rounded-lg mr-4">
+                      <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="font-moonscape text-lg text-white mb-1">Chat with us</h4>
+                      <p class="font-sansation text-gray-300">Live support</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="bg-blue-900/30 p-3 rounded-lg mr-4">
+                      <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="font-moonscape text-lg text-white mb-1">Email us</h4>
+                      <p class="font-sansation text-gray-300">info@unleft.com</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="bg-green-900/30 p-3 rounded-lg mr-4">
+                      <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="font-moonscape text-lg text-white mb-1">Call us</h4>
+                      <p class="font-sansation text-gray-300">+1 (555) 123-4567</p>
+                      <p class="font-sansation text-sm text-gray-400 mt-1">Available 24/7 for support</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div>
+              <div class="bg-gray-800/50 rounded-xl p-8">
+                <h3 class="font-moonscape text-2xl text-white mb-6">Send us a Message</h3>
+                <form class="space-y-6">
+                  <div>
+                    <input type="text" placeholder="Your Name" class="contact-input" />
+                  </div>
+                  <div>
+                    <input type="email" placeholder="Your Email" class="contact-input" />
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Subject" class="contact-input" />
+                  </div>
+                  <div>
+                    <textarea placeholder="Your Message" rows="4" class="contact-input"></textarea>
+                  </div>
+                  <button type="submit" class="btn-primary w-full py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white">
+                    Let's Talk
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6 md:px-12">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <!-- Brand Summary -->
+          <div>
+            <h3 class="font-audiowide text-2xl text-white mb-4">UNLEFT LLC</h3>
+            <p class="font-sansation text-gray-300">
+              Powering digital possibilities through innovative web solutions and cutting-edge technology.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-moonscape text-lg text-white mb-4">Quick Links</h4>
+            <div class="space-y-2">
+              <a href="#home" class="footer-link block">Home</a>
+              <a href="#about" class="footer-link block">About</a>
+              <a href="#services" class="footer-link block">Services</a>
+              <a href="#projects" class="footer-link block">Projects</a>
+              <a href="#team" class="footer-link block">Team</a>
+              <a href="#contact" class="footer-link block">Contact</a>
+            </div>
+          </div>
+
+          <!-- Our Projects -->
+          <div>
+            <h4 class="font-moonscape text-lg text-white mb-4">Our Projects</h4>
+            <div class="space-y-2">
+              <a href="https://mrbikebd.com" target="_blank" class="footer-link block">mrbikebd.com</a>
+              <a href="https://wishmaker.shop" target="_blank" class="footer-link block">wishmaker.shop</a>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h4 class="font-moonscape text-lg text-white mb-4">Contact Info</h4>
+            <div class="space-y-3">
+              <p class="font-sansation text-gray-300">info@unleft.com</p>
+              <p class="font-sansation text-gray-300">+1 (555) 123-4567</p>
+              <p class="font-sansation text-sm text-gray-400">Available 24/7 for support</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legal -->
+        <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+          <p class="font-sansation text-gray-400 mb-4 md:mb-0">
+            © 2025 UNLEFT LLC. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#" class="font-sansation text-gray-400 hover:text-white">Privacy Policy</a>
+            <a href="#" class="font-sansation text-gray-400 hover:text-white">Terms of Service</a>
+            <a href="#" class="font-sansation text-gray-400 hover:text-white">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // DOM elements
+      const loadingScreen = document.getElementById("loading-screen");
+      const heroVideo = document.getElementById("hero-video");
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const starryBackground = document.getElementById("starry-background");
+
+      // Starry background with mouse repulsion
+      function createStarryBackground() {
+        const stars = [];
+        const starCount = 150;
+        
+        // Create stars
+        for (let i = 0; i < starCount; i++) {
+          const star = document.createElement("div");
+          star.className = "star";
+          
+          // Random size (1-3px)
+          const size = Math.random() * 2 + 1;
+          star.style.width = `${size}px`;
+          star.style.height = `${size}px`;
+          
+          // Random position
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.top = `${Math.random() * 100}%`;
+          
+          // Random opacity
+          star.style.opacity = Math.random() * 0.7 + 0.3;
+          
+          // Random twinkle animation
+          star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite alternate`;
+          
+          starryBackground.appendChild(star);
+          stars.push({
+            element: star,
+            x: parseFloat(star.style.left),
+            y: parseFloat(star.style.top),
+            vx: 0,
+            vy: 0,
+            originalX: parseFloat(star.style.left),
+            originalY: parseFloat(star.style.top)
+          });
+        }
+        
+        // Mouse movement effect
+        let mouseX = 0;
+        let mouseY = 0;
+        const repulsionStrength = 0.05;
+        const returnStrength = 0.02;
+        
+        document.addEventListener("mousemove", (e) => {
+          mouseX = (e.clientX / window.innerWidth) * 100;
+          mouseY = (e.clientY / window.innerHeight) * 100;
+        });
+        
+        // Animation loop
+        function animateStars() {
+          stars.forEach(star => {
+            // Calculate distance to mouse
+            const dx = star.x - mouseX;
+            const dy = star.y - mouseY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // Apply repulsion force
+            if (distance < 20) {
+              const force = (20 - distance) / 20;
+              star.vx += (dx / distance) * force * repulsionStrength;
+              star.vy += (dy / distance) * force * repulsionStrength;
+            }
+            
+            // Return to original position
+            star.vx += (star.originalX - star.x) * returnStrength;
+            star.vy += (star.originalY - star.y) * returnStrength;
+            
+            // Apply velocity with damping
+            star.vx *= 0.95;
+            star.vy *= 0.95;
+            
+            // Update position
+            star.x += star.vx;
+            star.y += star.vy;
+            
+            // Apply boundaries
+            star.x = Math.max(0, Math.min(100, star.x));
+            star.y = Math.max(0, Math.min(100, star.y));
+            
+            // Update element
+            star.element.style.left = `${star.x}%`;
+            star.element.style.top = `${star.y}%`;
+          });
+          
+          requestAnimationFrame(animateStars);
+        }
+        
+        animateStars();
+      }
+
+      // Hide loading screen when video is loaded
+      window.addEventListener("load", function () {
+        // Simulate loading time for demonstration
+        setTimeout(function () {
+          loadingScreen.style.opacity = "0";
+          setTimeout(function () {
+            loadingScreen.style.display = "none";
+          }, 500);
+        }, 2000);
+        
+        // Create starry background
+        createStarryBackground();
+      });
+
+      // Video loaded event
+      heroVideo.addEventListener("loadeddata", function () {
+        console.log("Hero video loaded successfully");
+      });
+
+      // Video error handling
+      heroVideo.addEventListener("error", function () {
+        console.log("Error loading video, using fallback background");
+        // Fallback background if video fails to load
+        document.querySelector(".hero-video").style.display = "none";
+        document.querySelector(".hero-overlay").style.background =
+          "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)";
+      });
+
+      // Mobile menu toggle
+      mobileMenuButton.addEventListener("click", function () {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Navbar background on scroll
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector("nav");
+        if (window.scrollY > 50) {
+          navbar.classList.add("navbar");
+        } else {
+          navbar.classList.remove("navbar");
+        }
+      });
+    </script>
+  </body>
+</html>
