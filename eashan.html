@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECO | UNLEFT - Project Manager & Full-Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/eashan.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav-logo">
+                ECO<span>.</span>
+                <span class="company">UNLEFT</span>
+            </a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero section" id="home">
+        <div class="container flex items-center justify-between">
+            <div class="hero-content">
+                <p class="hero-subtitle fade-in">Project Manager & Full-Stack Developer</p>
+                <h1 class="hero-title fade-in delay-1">I'm <span>ECO</span></h1>
+                <p class="hero-description fade-in delay-2">Building innovative digital solutions at UNLEFT with expertise in backend development, DevOps, and marketing strategy. Combining technical skills with leadership to deliver exceptional results.</p>
+                <div class="hero-buttons fade-in delay-3">
+                    <a href="#contact" class="btn btn-primary">Hire Me</a>
+                    <a href="#portfolio" class="btn btn-outline">View Projects</a>
+                </div>
+                
+                <div class="hero-highlights fade-in delay-4">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="highlight-text">
+                            8+ Years
+                            <small>Experience</small>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="highlight-text">
+                            50+ Projects
+                            <small>Completed</small>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="highlight-text">
+                            100% Clients
+                            <small>Satisfaction</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image fade-in delay-5">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="ECO | UNLEFT">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About ECO">
+                </div>
+                
+                <div class="about-text">
+                    <div class="about-tabs fade-in delay-1">
+                        <button class="tab-btn active" data-tab="skills">Skills</button>
+                        <button class="tab-btn" data-tab="experience">Experience</button>
+                        <button class="tab-btn" data-tab="education">Education</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="skills-tab">
+                        <h3 class="fade-in delay-2">My Technical Skills</h3>
+                        <p class="fade-in delay-3">With extensive experience across multiple domains, I've developed a diverse skill set that allows me to tackle complex projects from concept to deployment.</p>
+                        
+                        <div class="about-skills fade-in delay-4">
+                            <h4>Development Tools</h4>
+                            <div class="skills-list">
+                                <span class="skill-item"><i class="fab fa-github"></i> GitHub</span>
+                                <span class="skill-item"><i class="fas fa-code"></i> VS Code</span>
+                                <span class="skill-item"><i class="fas fa-laptop-code"></i> Visual Studio</span>
+                                <span class="skill-item"><i class="fab fa-python"></i> PyCharm</span>
+                                <span class="skill-item"><i class="fab fa-android"></i> Android Studio</span>
+                            </div>
+                            
+                            <h4 class="mt-lg">Game Development</h4>
+                            <div class="skills-list">
+                                <span class="skill-item"><i class="fas fa-gamepad"></i> Unity</span>
+                                <span class="skill-item"><i class="fas fa-cube"></i> Buildbox</span>
+                                <span class="skill-item"><i class="fas fa-cubes"></i> Blender</span>
+                                <span class="skill-item"><i class="fas fa-headphones"></i> Audacity</span>
+                                <span class="skill-item"><i class="fas fa-paint-brush"></i> GIMP</span>
+                            </div>
+                            
+                            <h4 class="mt-lg">Web Technologies</h4>
+                            <div class="skills-list">
+                                <span class="skill-item"><i class="fab fa-html5"></i> HTML5</span>
+                                <span class="skill-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+                                <span class="skill-item"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="skill-item"><i class="fab fa-python"></i> Python</span>
+                                <span class="skill-item"><i class="fas fa-code"></i> C#</span>
+                            </div>
+                            
+                            <h4 class="mt-lg">Web Services</h4>
+                            <div class="skills-list">
+                                <span class="skill-item"><i class="fas fa-server"></i> Render</span>
+                                <span class="skill-item"><i class="fas fa-cloud"></i> Cloudflare</span>
+                                <span class="skill-item"><i class="fas fa-fire"></i> Firebase</span>
+                                <span class="skill-item"><i class="fab fa-google"></i> Google Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="experience-tab">
+                        <h3>My Professional Journey</h3>
+                        <p>From game development to web technologies, my career has evolved to encompass multiple facets of software development and project management.</p>
+                        
+                        <div class="experience-item">
+                            <div class="experience-date">2022 - Present</div>
+                            <h4 class="experience-title">Project Manager & Full-Stack Developer</h4>
+                            <div class="experience-company">UNLEFT</div>
+                            <p class="experience-description">
+                                Leading development teams in creating innovative web solutions while managing project timelines, resources, and client communications. Specializing in backend architecture and DevOps implementations.
+                            </p>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-date">2020 - 2022</div>
+                            <h4 class="experience-title">Game Developer</h4>
+                            <div class="experience-company">Indie Game Studio</div>
+                            <p class="experience-description">
+                                Developed and launched 5+ mobile games using Unity and Buildbox. Handled all aspects from concept to deployment including 3D modeling with Blender, sound design with Audacity, and graphic design with GIMP.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="education-tab">
+                        <h3>Education & Certifications</h3>
+                        <p>Continuous learning has been a cornerstone of my professional development, allowing me to stay at the forefront of technology.</p>
+                        
+                        <div class="experience-item">
+                            <div class="experience-date">2018</div>
+                            <h4 class="experience-title">Master's in Computer Science</h4>
+                            <div class="experience-company">Tech University</div>
+                            <p class="experience-description">
+                                Specialized in Software Engineering and Artificial Intelligence. Thesis on "Procedural Generation in Game Development" received department honors.
+                            </p>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-date">2021</div>
+                            <h4 class="experience-title">AWS Certified Solutions Architect</h4>
+                            <div class="experience-company">Amazon Web Services</div>
+                            <p class="experience-description">
+                                Earned certification demonstrating expertise in designing distributed systems on AWS cloud platform.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <p class="text-center mb-5 max-w-lg mx-auto fade-in">I offer comprehensive solutions tailored to modern business needs, combining technical expertise with strategic vision.</p>
+            
+            <div class="services-container">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Development</h3>
+                    <p>Robust server-side solutions with Python, Node.js, and C#. Design scalable APIs, microservices, and database architectures that power your applications.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>DevOps Engineering</h3>
+                    <p>CI/CD pipelines, containerization with Docker, Kubernetes orchestration, and cloud infrastructure management on AWS, GCP, and Azure.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Technical Marketing</h3>
+                    <p>Bridging the gap between technology and marketing with data-driven strategies, analytics implementation, and growth-focused solutions.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Game Development</h3>
+                    <p>From concept to deployment, create engaging games using Unity, Buildbox, with custom 3D assets and sound design.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-4">
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>Agile project leadership, resource allocation, timeline management, and stakeholder communication for technical projects.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-5">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Full-stack web applications with modern frameworks, responsive design, and optimized performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio section" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Portfolio</h2>
+            <p class="text-center mb-5 max-w-lg mx-auto fade-in">A curated selection of my recent projects across different domains.</p>
+            
+            <div class="portfolio-filters fade-in">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="game">Game Development</button>
+                <button class="filter-btn" data-filter="devops">DevOps</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce Platform" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">UNLEFT Marketplace</h3>
+                        <p class="portfolio-category">Web Development • Backend</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fas fa-link"></i>
+                                <span class="tooltip-text">Live Demo</span>
+                            </a>
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fab fa-github"></i>
+                                <span class="tooltip-text">View Code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in delay-1" data-category="game">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mobile Game" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Galactic Explorer</h3>
+                        <p class="portfolio-category">Game Development • Unity</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fab fa-google-play"></i>
+                                <span class="tooltip-text">Play Store</span>
+                            </a>
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fab fa-apple"></i>
+                                <span class="tooltip-text">App Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in delay-2" data-category="devops">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="CI/CD Pipeline" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Automated Deployment System</h3>
+                        <p class="portfolio-category">DevOps • Cloudflare</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fas fa-link"></i>
+                                <span class="tooltip-text">Case Study</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in delay-3" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Corporate Website" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">UNLEFT Corporate Site</h3>
+                        <p class="portfolio-category">Web Development • Marketing</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fas fa-link"></i>
+                                <span class="tooltip-text">Live Site</span>
+                            </a>
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="tooltip-text">Analytics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in delay-4" data-category="game">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="VR Game" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">VR Adventure</h3>
+                        <p class="portfolio-category">Game Development • Blender</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fas fa-vr-cardboard"></i>
+                                <span class="tooltip-text">VR Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in delay-5" data-category="devops">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cloud Architecture" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Scalable Cloud Infrastructure</h3>
+                        <p class="portfolio-category">DevOps • Google Cloud</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link tooltip">
+                                <i class="fas fa-link"></i>
+                                <span class="tooltip-text">Architecture</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="text-center mb-5 max-w-lg mx-auto fade-in">Have a project in mind or want to discuss potential opportunities? Reach out!</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in delay-1">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>eco@unleft.dev</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in delay-2">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in delay-3">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Working Hours</h4>
+                            <p>Mon-Fri: 9AM - 6PM PST</p>
+                            <p>Weekends: By appointment</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social fade-in delay-4">
+                        <h4>Follow Me</h4>
+                        <div class="footer-social">
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in delay-5">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full">
+                            <span class="btn-text">Send Message</span>
+                            <i class="fas fa-paper-plane btn-icon"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">
+                        ECO<span>.</span>
+                    </a>
+                    <p class="footer-description">
+                        Project Manager & Full-Stack Developer at UNLEFT specializing in backend development, DevOps, and technical marketing.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about" class="footer-link"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#services" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#portfolio" class="footer-link"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="#contact" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Backend Development</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> DevOps Engineering</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Technical Marketing</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Game Development</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Project Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p class="footer-description">
+                        Subscribe to my newsletter for the latest insights on technology, development, and digital strategy.
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Subscribe</span>
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> ECO | UNLEFT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Loading Animation -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Loading Portfolio</p>
+        </div>
+    </div>
+
+    <script src="js/eashan.js"></script>
+</body>
+</html>

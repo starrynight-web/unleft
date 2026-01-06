@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayma Ferdousi | Cosmic Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/sayma.css">
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg">
+        <div class="stars" id="stars-container"></div>
+        <div class="nebula" id="nebula-1" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(157,78,221,0.3), transparent); top: 10%; left: 20%;"></div>
+        <div class="nebula" id="nebula-2" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,45,117,0.2), transparent); bottom: 15%; right: 10%;"></div>
+        <div class="planet" id="planet-1" style="width: 100px; height: 100px; background: radial-gradient(circle, rgba(110,0,255,0.8), rgba(157,78,221,0.5)); top: 30%; right: 15%; animation-duration: 40s;"></div>
+    </div>
+
+    <!-- Particle Network -->
+    <canvas class="particle-network" id="particle-network"></canvas>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-logo">
+            <i class="fas fa-rocket"></i>
+            <span>Cosmic Developer</span>
+        </div>
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loading-progress"></div>
+            <div class="loading-progress-text" id="loading-progress-text">0%</div>
+        </div>
+        <div class="loading-text" id="loading-text">Initializing stellar components...</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-code logo-icon"></i>
+            <span>SaymaF</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Cosmic Code Explorer</h1>
+            <h2 class="hero-subtitle">Backend Developer & Space Enthusiast</h2>
+            <p class="hero-description">
+                <h1>Hi, myself, Sayma Ferdousi Fariha,</h1><br>
+                Bridging the gap between technology and the cosmos. I craft robust backend systems 
+                by day and explore the universe by night. Let's build something stellar together.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Get In Touch</span>
+                </a>
+                <a href="#projects" class="btn btn-outline">
+                    <span>View Projects</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+                <div class="hero-image-container">
+                    <img src="images-videos/sayma.jpg" alt="Sayma Image">
+                </div>
+            </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    An astrophile and software engineer driven by curiosity about the universe and passion for technology. 
+                    From exploring stars and constellations as a child to volunteering in NASA Citizen Science projects, 
+                    I've carried forward my fascination into developing impactful digital solutions.
+                </p>
+                <p>
+                    With a balance of technical expertise, leadership, and project management, I aim to create meaningful 
+                    innovations that connect science, technology, and people.
+                </p>
+                <p>
+                    When I'm not coding, you can find me stargazing, reading about astrophysics, or contributing to 
+                    open-source projects that advance scientific research.
+                </p>
+                <div class="about-buttons">
+                    <a href="#experience" class="btn btn-primary">
+                        <span>My Journey</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title">Professional Journey</h2>
+        <div class="experience-container">
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">Managing Director</h3>
+                                <p class="experience-company">UNLEFT LLC</p>
+                            </div>
+                            <span class="experience-date">2021 - Present</span>
+                        </div>
+                        <p class="experience-description">
+                            Leading operations, strategy, and project execution. Overseeing development teams and ensuring 
+                            timely project delivery. Building collaborations and guiding innovation-driven initiatives.
+                        </p>
+                        <div class="experience-skills">
+                            <span class="skill-tag">
+                                <i class="fas fa-chess-queen"></i>
+                                Leadership
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-chess"></i>
+                                Strategy
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-tasks"></i>
+                                Project Management
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">Backend Developer & Project Manager</h3>
+                                <p class="experience-company">Freelance & Contract</p>
+                            </div>
+                            <span class="experience-date">2019 - Present</span>
+                        </div>
+                        <p class="experience-description">
+                            Designed and managed backend systems with Python, Django, SQL. Implemented project workflows, 
+                            version control, and CI/CD with GitHub & GitLab. Delivered efficient, scalable, and user-centric 
+                            solutions for various web applications.
+                        </p>
+                        <div class="experience-skills">
+                            <span class="skill-tag">
+                                <i class="fab fa-python"></i>
+                                Python
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-database"></i>
+                                Django
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-server"></i>
+                                SQL
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-git-alt"></i>
+                                Git
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">Volunteer Researcher</h3>
+                                <p class="experience-company">NASA Citizen Science Projects</p>
+                            </div>
+                            <span class="experience-date">2020 - Present</span>
+                        </div>
+                        <p class="experience-description">
+                            Participated in astronomy-focused research and data analysis projects. Supported citizen-driven 
+                            scientific contributions in astrophysics and planetary science.
+                        </p>
+                        <div class="experience-skills">
+                            <span class="skill-tag">
+                                <i class="fas fa-chart-line"></i>
+                                Data Analysis
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-star"></i>
+                                Astronomy
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-microscope"></i>
+                                Research
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">B.Sc. in Software Engineering</h3>
+                                <p class="experience-company">University</p>
+                            </div>
+                            <span class="experience-date">2015 - 2019</span>
+                        </div>
+                        <p class="experience-description">
+                            Completed comprehensive coursework in software development, algorithms, database systems, 
+                            and computer architecture. Participated in research projects and coding competitions.
+                        </p>
+                        <div class="experience-skills">
+                            <span class="skill-tag">
+                                <i class="fas fa-code"></i>
+                                Algorithms
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-sitemap"></i>
+                                Data Structures
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-laptop-code"></i>
+                                Software Design
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3 class="skill-category-title">
+                    <i class="fas fa-code skill-category-icon"></i>
+                    Programming
+                </h3>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fab fa-python"></i>
+                            Python
+                        </span>
+                        <span class="skill-level">Expert</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fas fa-database"></i>
+                            Django
+                        </span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fab fa-html5"></i>
+                            HTML/CSS
+                        </span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">
+                    <i class="fas fa-database skill-category-icon"></i>
+                    Database & Tools
+                </h3>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fas fa-server"></i>
+                            SQL
+                        </span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fab fa-git-alt"></i>
+                            Git
+                        </span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fas fa-code"></i>
+                            VS Code
+                        </span>
+                        <span class="skill-level">Expert</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">
+                    <i class="fas fa-cloud skill-category-icon"></i>
+                    Cloud & Deployment
+                </h3>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fab fa-google"></i>
+                            Google Cloud
+                        </span>
+                        <span class="skill-level">Intermediate</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fas fa-fire"></i>
+                            Firebase
+                        </span>
+                        <span class="skill-level">Intermediate</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fas fa-server"></i>
+                            Render
+                        </span>
+                        <span class="skill-level">Intermediate</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 65%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images-videos/unleft.png" alt="UNLEFT.space">
+                    <div class="project-tags">
+                        <span class="project-tag">
+                            <i class="fab fa-python"></i>
+                            Django
+                        </span>
+                        <span class="project-tag">
+                            <i class="fas fa-database"></i>
+                            SQL
+                        </span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">UNLEFT.space</h3>
+                    <p class="project-description">
+                        Company platform with custom backend architecture using Django & SQL. 
+                        Integrated cloud deployment with Firebase & Render.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images-videos/nasa project.png" alt="Astronomy Tools">
+                    <div class="project-tags">
+                        <span class="project-tag">
+                            <i class="fab fa-python"></i>
+                            Python
+                        </span>
+                        <span class="project-tag">
+                            <i class="fas fa-chart-line"></i>
+                            Data Analysis
+                        </span>
+                        <span class="project-tag">
+                            <i class="fa-solid fa-book-atlas"></i>
+                            Researcher
+                        </span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Astronomy Data Analysis</h3>
+                    <p class="project-description">
+                        As a NASA Citizen Scientist, contribution to projects like spotting clouds on Mars, studying the Sun’s activity , and tracking Jupiter’s giant storms. It’s been an exciting journey of curiosity and discovery, showing how anyone can be part of exploring our universe!
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images-videos/scistarter.png" alt="Cloud Solutions">
+                    <div class="project-tags">
+                        <span class="project-tag">
+                            <i class="fa-solid fa-book-atlas"></i>
+                            Researcher
+                        </span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Community Research Enthusiast</h3>
+                    <p class="project-description">
+                        Engaged in diverse community science projects that connect people worldwide, turning curiosity into real discoveries and impact.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images-videos/mrbike.png" alt="MrBike Project">
+                    <div class="project-tags">
+                        <span class="project-tag">
+                            <i class="fa-solid fa-layer-group"></i>
+                            Full Stack
+                        </span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Full Stack Development</h3>
+                    <p class="project-description">
+                        Worked as a full-stack developer on a website named "MrBike", Bangladesh's most popular bike information website; using Django & PostgreSQL for backend, and html, css, javascript for frontend, creating a platform for users to manage their tasks and projects efficiently.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon-container">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <a href="mailto:sayma.md@unleft.space">sayma.md@unleft.space</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-container">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Website</h3>
+                        <a href="https://unleft.space" target="_blank">unleft.space</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-container">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/StarryScripts" target="_blank">github.com/StarryScripts</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-container">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/sayma-ferdousi-fariha-98ba28367/" target="_blank">linkedin.com/in/sayma-ferdousi-fariha-98ba28367/</a>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">
+                        Sayma<span>.</span>
+                    </a>
+                    <p class="footer-description">
+                        Backend Developer & Space Enthusiast at UNLEFT specializing in Python, Django, and cloud technologies.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://github.com/StarryScripts" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/sayma-ferdousi-fariha-98ba28367/" target="_blank" class="fab fa-linkedin-in social-link"></a>
+                        <a href="https://www.facebook.com/share/1CJEWgkcr5/" target="_blank" class="fab fa-facebook social-link"></a>
+                        <a href="https://www.instagram.com/say._fred._fariha007?igsh=MWdlZzhraGJqOHhoNw==" target="_blank" class="fab fa-instagram social-link"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about" class="footer-link"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#experience" class="footer-link"><i class="fas fa-chevron-right"></i> Experience</a></li>
+                        <li><a href="#skills" class="footer-link"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="#projects" class="footer-link"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Backend Development</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Django Development</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Database Design</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Cloud Solutions</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Project Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p class="footer-description">
+                        Subscribe to my newsletter for the latest insights on technology, development, and space exploration.
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Subscribe</span>
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Sayma Ferdousi | UNLEFT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Terminal -->
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="terminal-title">terminal — bash — 80×24</span>
+            <div class="terminal-controls">
+                <div class="terminal-btn close" id="terminal-close"></div>
+                <div class="terminal-btn minimize" id="terminal-minimize"></div>
+                <div class="terminal-btn maximize" id="terminal-maximize"></div>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-command">whoami</span>
+            </div>
+            <div class="terminal-output">
+                sayma_ferdousi — backend_dev — space_enthusiast
+            </div>
+            
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-command">cat skills.txt</span>
+            </div>
+            <div class="terminal-output">
+                Python | Django | SQL | Git | Cloud Technologies
+            </div>
+            
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-command">ls projects/</span>
+            </div>
+            <div class="terminal-output">
+                unleft_space  astronomy_tools  cloud_solutions
+            </div>
+            
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-command">nano contact.sh</span>
+            </div>
+            <div class="terminal-output">
+                Ready to collaborate? Let's connect!
+                Email: sayma.md@unleft.space
+                Website: unleft.space
+            </div>
+            
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-command pulse">_</span>
+            </div>
+        </div>
+    </div>
+    <div class="terminal-toggle" id="terminal-toggle">
+        <i class="fas fa-terminal"></i>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="js/sayma.js"></script>
+</body>
+</html>

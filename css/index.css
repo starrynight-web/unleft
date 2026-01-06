@@ -1,0 +1,285 @@
+/* Custom fonts setup */
+.font-moonscape {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.font-audiowide {
+  font-family: "Audiowide", cursive;
+}
+
+.font-sansation {
+  font-family: "Sansation", sans-serif;
+}
+
+/* Hero section styling */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Loading screen container */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* New UNLEFT.space style loading content */
+.loading-screen-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loading-logo-wrapper {
+  transition: all 1s ease;
+  transform: translateY(2rem) scale(0.95);
+  opacity: 0;
+}
+
+.loading-logo-wrapper.visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.loading-progress-bar {
+  width: 12rem;
+  max-width: 20rem;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.loading-progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(to right, #0891b2, #22d3ee, #ffffff);
+  transition: width 2.2s ease-out;
+}
+
+.loading-progress-fill.full {
+  width: 100%;
+}
+
+@keyframes meteorThroughCenter {
+  0% {
+    transform: translate(-50%, -50%) rotate(35deg) translateX(-180%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(35deg) translateX(280%);
+    opacity: 0;
+  }
+}
+
+.animate-meteor-center {
+  top: 50%;
+  left: 50%;
+  animation: meteorThroughCenter 2.4s cubic-bezier(0.1, 0, 0.1, 1) forwards;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar styling */
+.navbar {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Constellation canvas background */
+#space-background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  background-color: #000000;
+}
+
+/* Section styling with starry background */
+.section-with-stars {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Team section - Bento grid removed, using Tailwind classes in HTML */
+
+/* Toggle classes for valid smooth transitions */
+.team-member-card {
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.member-details-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-member-card.expanded .member-details-wrapper {
+  max-height: 500px; /* Arbitrary large enough value */
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.member-image-wrapper {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-member-card.expanded .member-image-wrapper {
+  max-width: 150px;
+  opacity: 1;
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .team-member-card.expanded .member-image-wrapper {
+    max-width: 100%; /* Stack on mobile */
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+
+  .team-member-card.expanded {
+    flex-direction: column-reverse;
+  }
+}
+
+/* Stats cards styling */
+.stat-card {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1) 0%,
+    rgba(118, 75, 162, 0.1) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Project cards */
+.project-card {
+  background: rgba(30, 30, 40, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+}
+
+/* Service cards */
+.service-card {
+  background: rgba(30, 30, 40, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+}
+
+/* Contact form */
+.contact-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+/* Footer styling */
+.footer-link {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: white;
+}

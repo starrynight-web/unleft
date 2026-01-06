@@ -15,363 +15,68 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      /* Custom fonts setup */
-      .font-moonscape {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 800;
-        letter-spacing: 0.05em;
-      }
-
-      .font-audiowide {
-        font-family: "Audiowide", cursive;
-      }
-
-      .font-sansation {
-        font-family: "Sansation", sans-serif;
-      }
-
-      /* Hero section styling */
-      .hero-video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-      }
-
-      .hero-overlay {
-        background: rgba(0, 0, 0, 0.6);
-      }
-
-      /* Loading screen styling */
-      .loader {
-        --size: 250px;
-        --duration: 2s;
-        --logo-color: grey;
-        --background: linear-gradient(
-          0deg,
-          rgba(50, 50, 50, 0.2) 0%,
-          rgba(100, 100, 100, 0.2) 100%
-        );
-        height: var(--size);
-        aspect-ratio: 1;
-        position: relative;
-      }
-
-      .loader .box {
-        position: absolute;
-        background: rgba(100, 100, 100, 0.15);
-        background: var(--background);
-        border-radius: 50%;
-        border-top: 1px solid rgba(100, 100, 100, 1);
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
-        backdrop-filter: blur(5px);
-        animation: ripple var(--duration) infinite ease-in-out;
-      }
-
-      .loader .box:nth-child(1) {
-        inset: 40%;
-        z-index: 99;
-        background-color: azure;
-      }
-
-      .loader .box:nth-child(2) {
-        inset: 30%;
-        z-index: 98;
-        border-color: rgba(100, 100, 100, 0.8);
-        animation-delay: 0.2s;
-      }
-
-      .loader .box:nth-child(3) {
-        inset: 20%;
-        z-index: 97;
-        border-color: rgba(100, 100, 100, 0.6);
-        animation-delay: 0.4s;
-      }
-
-      .loader .box:nth-child(4) {
-        inset: 10%;
-        z-index: 96;
-        border-color: rgba(100, 100, 100, 0.4);
-        animation-delay: 0.6s;
-      }
-
-      .loader .box:nth-child(5) {
-        inset: 0%;
-        z-index: 95;
-        border-color: rgba(100, 100, 100, 0.2);
-        animation-delay: 0.8s;
-      }
-
-      .loader .logo {
-        position: absolute;
-        inset: 0;
-        display: grid;
-        place-content: center;
-        /* padding: 30%; */
-      }
-
-      @keyframes ripple {
-        0% {
-          transform: scale(1);
-          box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
-        }
-        50% {
-          transform: scale(1.3);
-          box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 20px -0px;
-        }
-        100% {
-          transform: scale(1);
-          box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
-        }
-      }
-
-      @keyframes color-change {
-        0% {
-          fill: var(--logo-color);
-        }
-        50% {
-          fill: white;
-        }
-        100% {
-          fill: var(--logo-color);
-        }
-      }
-
-      /* Loading screen container */
-      #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #0a0a0a;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease;
-      }
-
-      /* Custom button styles */
-      .btn-primary {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        transition: all 0.3s ease;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      .btn-secondary {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-3px);
-      }
-
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Navbar styling */
-      .navbar {
-        background: rgba(10, 10, 10, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      /* Starry background */
-      #starry-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-        overflow: hidden;
-        background-color: black;
-      }
-
-      .star {
-        position: absolute;
-        background-color: white;
-        border-radius: 50%;
-        pointer-events: none;
-        transition: transform 0.2s ease-out;
-      }
-
-      /* Section styling with starry background */
-      .section-with-stars {
-        position: relative;
-        overflow: hidden;
-      }
-
-      /* Team section - Bento grid for desktop, stacking for mobile */
-      .team-bento-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, auto);
-        gap: 1.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .team-member-card {
-        background: rgba(30, 30, 40, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 1rem;
-        padding: 1.5rem;
-        transition: all 0.3s ease;
-      }
-
-      .team-member-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(102, 126, 234, 0.5);
-        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
-      }
-
-      /* Bento grid positioning for desktop */
-      @media (min-width: 768px) {
-        .team-bento-grid .team-member-card:nth-child(1) {
-          grid-column: 1 / 3;
-          grid-row: 1;
-        }
-        .team-bento-grid .team-member-card:nth-child(2) {
-          grid-column: 3 / 5;
-          grid-row: 1;
-        }
-        .team-bento-grid .team-member-card:nth-child(3) {
-          grid-column: 1 / 2;
-          grid-row: 2;
-        }
-        .team-bento-grid .team-member-card:nth-child(4) {
-          grid-column: 2 / 4;
-          grid-row: 2;
-        }
-        .team-bento-grid .team-member-card:nth-child(5) {
-          grid-column: 4 / 5;
-          grid-row: 2;
-        }
-        .team-bento-grid .team-member-card:nth-child(6) {
-          grid-column: 1 / 3;
-          grid-row: 3;
-        }
-        .team-bento-grid .team-member-card:nth-child(7) {
-          grid-column: 3 / 5;
-          grid-row: 3;
-        }
-      }
-
-      /* Stacking for mobile */
-      @media (max-width: 767px) {
-        .team-bento-grid {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-      }
-
-      /* Stats cards styling */
-      .stat-card {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 1rem;
-        padding: 2rem;
-        text-align: center;
-      }
-
-      /* Project cards */
-      .project-card {
-        background: rgba(30, 30, 40, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 1rem;
-        overflow: hidden;
-        transition: all 0.3s ease;
-      }
-
-      .project-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(102, 126, 234, 0.5);
-        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
-      }
-
-      /* Service cards */
-      .service-card {
-        background: rgba(30, 30, 40, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 1rem;
-        padding: 2rem;
-        transition: all 0.3s ease;
-      }
-
-      .service-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(102, 126, 234, 0.5);
-        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
-      }
-
-      /* Contact form */
-      .contact-input {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 0.5rem;
-        padding: 0.75rem 1rem;
-        color: white;
-        width: 100%;
-        transition: all 0.3s ease;
-      }
-
-      .contact-input:focus {
-        outline: none;
-        border-color: #667eea;
-        box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
-      }
-
-      /* Footer styling */
-      .footer-link {
-        color: rgba(255, 255, 255, 0.6);
-        transition: color 0.3s ease;
-      }
-
-      .footer-link:hover {
-        color: white;
-      }
-    </style>
+    <link rel="stylesheet" href="css/index.css" />
   </head>
-  <body class="font-sansation bg-gray-900 text-white">
-    <!-- Loading Screen -->
+  <body class="font-sansation bg-black text-white">
+    <!-- Loading Screen (UNLEFT.space style, on black background) -->
     <div id="loading-screen">
-      <div class="loader">
-        <div class="box">
-          <div class="logo">
-            <img src="unleft.png" alt="logo" />
+      <div class="loading-screen-inner">
+        <!-- Shooting star through center -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            class="animate-meteor-center absolute w-[400px] h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-white blur-[0.5px]"
+          ></div>
+        </div>
+
+        <!-- Logo and progress -->
+        <div class="relative z-10 flex flex-col items-center">
+          <div id="loading-logo-wrapper" class="loading-logo-wrapper">
+            <div class="relative mb-8 text-center">
+              <h1
+                class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white font-audiowide"
+              >
+                UNLEFT<span class="text-cyan-500">.</span>SPACE
+              </h1>
+              <div
+                class="absolute -inset-x-4 -inset-y-2 bg-cyan-500/5 blur-2xl -z-10 rounded-full"
+              ></div>
+            </div>
+
+            <div class="loading-progress-bar">
+              <div
+                id="loading-progress-fill"
+                class="loading-progress-fill"
+              ></div>
+            </div>
+
+            <div class="mt-6 flex flex-col items-center gap-1">
+              <p
+                class="text-[9px] text-cyan-400/60 font-sansation tracking-[0.6em] uppercase text-center"
+              >
+                System Initialization
+              </p>
+              <div class="flex gap-1">
+                <span
+                  class="w-1 h-1 bg-cyan-500/40 rounded-full animate-bounce"
+                  style="animation-delay: 0s"
+                ></span>
+                <span
+                  class="w-1 h-1 bg-cyan-500/40 rounded-full animate-bounce"
+                  style="animation-delay: 0.2s"
+                ></span>
+                <span
+                  class="w-1 h-1 bg-cyan-500/40 rounded-full animate-bounce"
+                  style="animation-delay: 0.4s"
+                ></span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
       </div>
     </div>
 
-    <!-- Starry Background -->
-    <div id="starry-background"></div>
+    <!-- Constellation Background Canvas -->
+    <canvas id="space-background-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar fixed top-0 left-0 w-full z-50 py-4 px-6 md:px-12">
@@ -483,7 +188,7 @@
       <!-- Background Video -->
       <video autoplay muted playsinline class="hero-video" id="hero-video">
         <!-- Fallback video (placeholder) -->
-        <source src="earth.mp4" type="video/mp4" />
+        <source src="images-videos/earth.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -590,10 +295,12 @@
           </h2>
           <div class="max-w-3xl mx-auto">
             <p class="font-sansation text-xl text-gray-300 mb-8">
-              UNLEFT LLC is a forward-thinking software development company that transforms ideas into digital reality.
+              UNLEFT LLC is a forward-thinking software development company that
+              transforms ideas into digital reality.
             </p>
             <p class="font-sansation text-lg text-gray-300 mb-12">
-              We specialize in creating innovative web solutions that drive business growth and enhance user experiences.
+              We specialize in creating innovative web solutions that drive
+              business growth and enhance user experiences.
             </p>
           </div>
         </div>
@@ -602,15 +309,25 @@
           <!-- Mission & Vision -->
           <div>
             <div class="bg-gray-800/50 rounded-xl p-8 mb-8">
-              <h3 class="font-moonscape text-2xl text-white mb-4">Our Mission</h3>
+              <h3 class="font-moonscape text-2xl text-white mb-4">
+                Our Mission
+              </h3>
               <p class="font-sansation text-gray-300">
-                Our mission is to empower businesses with cutting-edge technology solutions while maintaining the highest standards of quality, security, and performance.
+                Our mission is to empower businesses with cutting-edge
+                technology solutions while maintaining the highest standards of
+                quality, security, and performance.
               </p>
             </div>
-            <div class="bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-8">
-              <h3 class="font-moonscape text-2xl text-white mb-4">Our Vision</h3>
+            <div
+              class="bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-8"
+            >
+              <h3 class="font-moonscape text-2xl text-white mb-4">
+                Our Vision
+              </h3>
               <p class="font-sansation text-gray-300">
-                To be the leading digital solutions provider that bridges the gap between innovative technology and business success, creating lasting impact in the digital landscape.
+                To be the leading digital solutions provider that bridges the
+                gap between innovative technology and business success, creating
+                lasting impact in the digital landscape.
               </p>
             </div>
           </div>
@@ -618,14 +335,34 @@
           <!-- Portfolio & Stats -->
           <div>
             <div class="bg-gray-800/50 rounded-xl p-8 mb-8">
-              <h3 class="font-moonscape text-2xl text-white mb-4">Our Platforms</h3>
+              <h3 class="font-moonscape text-2xl text-white mb-4">
+                Our Platforms
+              </h3>
               <p class="font-sansation text-gray-300 mb-6">
-                As a parent company, we've successfully launched and manage multiple digital platforms, including mrbikebd.com and wishmaker.shop, showcasing our ability to build and scale diverse online businesses.
+                As a parent company, we've successfully launched and manage
+                multiple digital platforms, including mrbikebd.com and
+                wishmaker.shop, showcasing our ability to build and scale
+                diverse online businesses.
               </p>
-              <a href="#projects" class="inline-flex items-center text-purple-400 hover:text-purple-300">
-                <span class="font-sansation font-bold">Explore Our Projects</span>
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <a
+                href="#projects"
+                class="inline-flex items-center text-purple-400 hover:text-purple-300"
+              >
+                <span class="font-sansation font-bold"
+                  >Explore Our Projects</span
+                >
+                <svg
+                  class="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
                 </svg>
               </a>
             </div>
@@ -653,10 +390,23 @@
         </div>
 
         <div class="text-center">
-          <a href="#services" class="btn-primary inline-flex items-center py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white">
+          <a
+            href="#services"
+            class="btn-primary inline-flex items-center py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white"
+          >
             Learn More
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <svg
+              class="w-5 h-5 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
             </svg>
           </a>
         </div>
@@ -664,12 +414,18 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section-with-stars py-20 px-6 md:px-12 bg-gray-900/50">
+    <section
+      id="services"
+      class="section-with-stars py-20 px-6 md:px-12 bg-gray-900/50"
+    >
       <div class="container mx-auto">
         <div class="text-center mb-16">
-          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">Our Services</h2>
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">
+            Our Services
+          </h2>
           <p class="font-sansation text-xl text-gray-300 max-w-2xl mx-auto">
-            We offer comprehensive digital solutions to help your business thrive in the modern marketplace.
+            We offer comprehensive digital solutions to help your business
+            thrive in the modern marketplace.
           </p>
         </div>
 
@@ -677,26 +433,37 @@
           <!-- Service 1 -->
           <div class="service-card">
             <div class="mb-6">
-              <h3 class="font-moonscape text-2xl text-white mb-4">Web Development</h3>
+              <h3 class="font-moonscape text-2xl text-white mb-4">
+                Web Development
+              </h3>
               <p class="font-sansation text-gray-300 mb-6">
-                Custom websites and web applications built with modern technologies, responsive design, and optimal performance.
+                Custom websites and web applications built with modern
+                technologies, responsive design, and optimal performance.
               </p>
               <div class="space-y-3">
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">React & Next.js</span>
+                  <span class="font-sansation text-gray-300"
+                    >React & Next.js</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Full-Stack Solutions</span>
+                  <span class="font-sansation text-gray-300"
+                    >Full-Stack Solutions</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Mobile Responsive</span>
+                  <span class="font-sansation text-gray-300"
+                    >Mobile Responsive</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">SEO Optimized</span>
+                  <span class="font-sansation text-gray-300"
+                    >SEO Optimized</span
+                  >
                 </div>
               </div>
             </div>
@@ -705,26 +472,37 @@
           <!-- Service 2 -->
           <div class="service-card">
             <div class="mb-6">
-              <h3 class="font-moonscape text-2xl text-white mb-4">Website Management</h3>
+              <h3 class="font-moonscape text-2xl text-white mb-4">
+                Website Management
+              </h3>
               <p class="font-sansation text-gray-300 mb-6">
-                Comprehensive website maintenance, updates, security monitoring, and performance optimization services.
+                Comprehensive website maintenance, updates, security monitoring,
+                and performance optimization services.
               </p>
               <div class="space-y-3">
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">24/7 Monitoring</span>
+                  <span class="font-sansation text-gray-300"
+                    >24/7 Monitoring</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Security Updates</span>
+                  <span class="font-sansation text-gray-300"
+                    >Security Updates</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Performance Optimization</span>
+                  <span class="font-sansation text-gray-300"
+                    >Performance Optimization</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Content Management</span>
+                  <span class="font-sansation text-gray-300"
+                    >Content Management</span
+                  >
                 </div>
               </div>
             </div>
@@ -733,26 +511,37 @@
           <!-- Service 3 -->
           <div class="service-card">
             <div class="mb-6">
-              <h3 class="font-moonscape text-2xl text-white mb-4">Business Email Solutions</h3>
+              <h3 class="font-moonscape text-2xl text-white mb-4">
+                Business Email Solutions
+              </h3>
               <p class="font-sansation text-gray-300 mb-6">
-                Professional email setup, domain configuration, and secure communication solutions for your business.
+                Professional email setup, domain configuration, and secure
+                communication solutions for your business.
               </p>
               <div class="space-y-3">
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Domain Email Setup</span>
+                  <span class="font-sansation text-gray-300"
+                    >Domain Email Setup</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Security Configuration</span>
+                  <span class="font-sansation text-gray-300"
+                    >Security Configuration</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Migration Services</span>
+                  <span class="font-sansation text-gray-300"
+                    >Migration Services</span
+                  >
                 </div>
                 <div class="flex items-center">
                   <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  <span class="font-sansation text-gray-300">Ongoing Support</span>
+                  <span class="font-sansation text-gray-300"
+                    >Ongoing Support</span
+                  >
                 </div>
               </div>
             </div>
@@ -765,9 +554,12 @@
     <section id="projects" class="section-with-stars py-20 px-6 md:px-12">
       <div class="container mx-auto">
         <div class="text-center mb-16">
-          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">Highlighted Projects</h2>
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">
+            Highlighted Projects
+          </h2>
           <p class="font-sansation text-xl text-gray-300 max-w-2xl mx-auto">
-            Explore our flagship platforms that demonstrate our expertise in building scalable, user-focused digital solutions.
+            Explore our flagship platforms that demonstrate our expertise in
+            building scalable, user-focused digital solutions.
           </p>
         </div>
 
@@ -775,23 +567,55 @@
           <!-- Project 1 -->
           <div class="project-card">
             <div class="p-8">
-              <h3 class="font-moonscape text-2xl text-white mb-4">mrbikebd.com</h3>
+              <h3 class="font-moonscape text-2xl text-white mb-4">
+                mrbikebd.com
+              </h3>
               <p class="font-sansation text-gray-300 mb-6">
-                A comprehensive bike information platform designed specifically for Bangladeshi users, featuring detailed bike reviews, specifications, and community discussions.
+                A comprehensive bike information platform designed specifically
+                for Bangladeshi users, featuring detailed bike reviews,
+                specifications, and community discussions.
               </p>
               <div class="mb-6">
-                <h4 class="font-moonscape text-lg text-white mb-3">Technologies Used:</h4>
+                <h4 class="font-moonscape text-lg text-white mb-3">
+                  Technologies Used:
+                </h4>
                 <div class="flex flex-wrap gap-2">
-                  <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">React</span>
-                  <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">Node.js</span>
-                  <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm">MongoDB</span>
-                  <span class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-sm">Responsive Design</span>
+                  <span
+                    class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm"
+                    >React</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm"
+                    >Node.js</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm"
+                    >MongoDB</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-sm"
+                    >Responsive Design</span
+                  >
                 </div>
               </div>
-              <a href="https://mrbikebd.com" target="_blank" class="inline-flex items-center text-purple-400 hover:text-purple-300">
+              <a
+                href="https://mrbikebd.com"
+                target="_blank"
+                class="inline-flex items-center text-purple-400 hover:text-purple-300"
+              >
                 <span class="font-sansation font-bold">Visit Website</span>
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                <svg
+                  class="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
                 </svg>
               </a>
             </div>
@@ -800,23 +624,55 @@
           <!-- Project 2 -->
           <div class="project-card">
             <div class="p-8">
-              <h3 class="font-moonscape text-2xl text-white mb-4">wishmaker.shop</h3>
+              <h3 class="font-moonscape text-2xl text-white mb-4">
+                wishmaker.shop
+              </h3>
               <p class="font-sansation text-gray-300 mb-6">
-                A personalized message delivery platform for special occasions like birthdays, anniversaries, and Valentine's Day, connecting hearts through meaningful messages.
+                A personalized message delivery platform for special occasions
+                like birthdays, anniversaries, and Valentine's Day, connecting
+                hearts through meaningful messages.
               </p>
               <div class="mb-6">
-                <h4 class="font-moonscape text-lg text-white mb-3">Technologies Used:</h4>
+                <h4 class="font-moonscape text-lg text-white mb-3">
+                  Technologies Used:
+                </h4>
                 <div class="flex flex-wrap gap-2">
-                  <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">Next.js</span>
-                  <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">TypeScript</span>
-                  <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm">Stripe</span>
-                  <span class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-sm">Email API</span>
+                  <span
+                    class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm"
+                    >Next.js</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm"
+                    >Stripe</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-sm"
+                    >Email API</span
+                  >
                 </div>
               </div>
-              <a href="https://wishmaker.shop" target="_blank" class="inline-flex items-center text-purple-400 hover:text-purple-300">
+              <a
+                href="https://wishmaker.shop"
+                target="_blank"
+                class="inline-flex items-center text-purple-400 hover:text-purple-300"
+              >
                 <span class="font-sansation font-bold">Visit Website</span>
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                <svg
+                  class="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
                 </svg>
               </a>
             </div>
@@ -824,10 +680,23 @@
         </div>
 
         <div class="text-center">
-          <a href="#contact" class="btn-secondary inline-flex items-center py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white">
+          <a
+            href="#contact"
+            class="btn-secondary inline-flex items-center py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white"
+          >
             View All Projects
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <svg
+              class="w-5 h-5 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
             </svg>
           </a>
         </div>
@@ -835,104 +704,402 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="section-with-stars py-20 px-6 md:px-12 bg-gray-900/50">
+    <section
+      id="team"
+      class="section-with-stars py-20 px-6 md:px-12 bg-gray-900/50"
+    >
       <div class="container mx-auto">
         <div class="text-center mb-16">
-          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">Meet Our Team</h2>
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">
+            Meet Our Team
+          </h2>
           <p class="font-sansation text-xl text-gray-300 max-w-2xl mx-auto">
-            Our talented team of 7 developers brings diverse skills and experience to every project.
+            Our talented team brings diverse skills and experience to every
+            project.
           </p>
         </div>
 
-        <!-- Bento Grid for Desktop / Stacking for Mobile -->
-        <div class="team-bento-grid">
-          <!-- Team Member 1 -->
-          <div class="team-member-card">
-            <h3 class="font-moonscape text-xl text-white mb-2">Golam Rasul</h3>
-            <p class="font-sansation text-purple-400 mb-4">Chairperson</p>
-            <p class="font-sansation text-gray-300 mb-4">Leads Board, ensures vision & compliance.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Python</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Ruby</span>
+        <!-- Standard Grid for 6 members -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
+          <!-- Team Member 1: Golam Rasul -->
+          <div
+            class="team-member-card group flex items-start justify-between overflow-hidden"
+            onclick="toggleMemberCard(this)"
+          >
+            <!-- Left Side: Content -->
+            <div class="flex-1 min-w-0">
+              <h3
+                class="font-moonscape text-xl text-white mb-2 group-hover:text-purple-400 transition-colors"
+              >
+                Golam Rasul
+              </h3>
+              <p class="font-sansation text-purple-400 mb-2">Chairperson</p>
+
+              <div class="member-details-wrapper">
+                <p class="font-sansation text-gray-300 mb-4 text-sm">
+                  Leads Board, ensures vision & compliance.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >Python</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >Ruby</span
+                  >
+                </div>
+                <div>
+                  <a
+                    href="rasul.html"
+                    class="inline-block text-purple-400 hover:text-white font-sansation text-sm underline decoration-purple-500 decoration-2 underline-offset-4"
+                    onclick="event.stopPropagation()"
+                  >
+                    View Portfolio
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="text-xs text-gray-500 mt-2 italic group-hover:text-gray-400 transition-colors member-hint"
+              >
+                Click to expand
+              </div>
+            </div>
+
+            <!-- Right Side: Image (Collapsible) -->
+            <div class="member-image-wrapper shrink-0">
+              <img
+                src="images-videos/rasul1.jpg"
+                alt="Golam Rasul"
+                class="w-24 h-24 rounded-full object-cover border-2 border-purple-500 shadow-lg"
+              />
             </div>
           </div>
 
-          <!-- Team Member 2 -->
-          <div class="team-member-card">
-            <h3 class="font-moonscape text-xl text-white mb-2">Sayma Ferdousi Fariha</h3>
-            <p class="font-sansation text-purple-400 mb-4">Managing Director</p>
-            <p class="font-sansation text-gray-300 mb-4">Aligns with investors & stakeholders.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Python</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Django</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Database</span>
+          <!-- Team Member 2: Sayma Ferdousi Fariha -->
+          <div
+            class="team-member-card group flex items-start justify-between overflow-hidden"
+            onclick="toggleMemberCard(this)"
+          >
+            <div class="flex-1 min-w-0">
+              <h3
+                class="font-moonscape text-xl text-white mb-2 group-hover:text-purple-400 transition-colors"
+              >
+                Sayma Ferdousi Fariha
+              </h3>
+              <p class="font-sansation text-purple-400 mb-2">
+                Managing Director
+              </p>
+
+              <div class="member-details-wrapper">
+                <p class="font-sansation text-gray-300 mb-4 text-sm">
+                  Aligns with investors & stakeholders.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >Python</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >Django</span
+                  >
+                </div>
+                <div>
+                  <a
+                    href="sayma.html"
+                    class="inline-block text-purple-400 hover:text-white font-sansation text-sm underline decoration-purple-500 decoration-2 underline-offset-4"
+                    onclick="event.stopPropagation()"
+                  >
+                    View Portfolio
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="text-xs text-gray-500 mt-2 italic group-hover:text-gray-400 transition-colors member-hint"
+              >
+                Click to expand
+              </div>
+            </div>
+
+            <div class="member-image-wrapper shrink-0">
+              <img
+                src="images-videos/sayma.jpg"
+                alt="Sayma Ferdousi Fariha"
+                class="w-24 h-24 rounded-full object-cover border-2 border-purple-500 shadow-lg"
+              />
             </div>
           </div>
 
-          <!-- Team Member 3 -->
-          <div class="team-member-card">
-            <h3 class="font-moonscape text-xl text-white mb-2">Mahtabul Al Nahian</h3>
-            <p class="font-sansation text-purple-400 mb-4">Chief Operating Officer</p>
-            <p class="font-sansation text-gray-300 mb-4">Manages internal operations.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">JavaScript</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Figma</span>
+          <!-- Team Member 3: Mahtabul Al Nahian -->
+          <div
+            class="team-member-card group flex items-start justify-between overflow-hidden"
+            onclick="toggleMemberCard(this)"
+          >
+            <div class="flex-1 min-w-0">
+              <h3
+                class="font-moonscape text-xl text-white mb-2 group-hover:text-purple-400 transition-colors"
+              >
+                Mahtabul Al Nahian
+              </h3>
+              <p class="font-sansation text-purple-400 mb-2">
+                Chief Operating Officer
+              </p>
+
+              <div class="member-details-wrapper">
+                <p class="font-sansation text-gray-300 mb-4 text-sm">
+                  Manages internal operations.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >Figma</span
+                  >
+                </div>
+                <div>
+                  <a
+                    href="mahtab.html"
+                    class="inline-block text-purple-400 hover:text-white font-sansation text-sm underline decoration-purple-500 decoration-2 underline-offset-4"
+                    onclick="event.stopPropagation()"
+                  >
+                    View Portfolio
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="text-xs text-gray-500 mt-2 italic group-hover:text-gray-400 transition-colors member-hint"
+              >
+                Click to expand
+              </div>
+            </div>
+
+            <div class="member-image-wrapper shrink-0">
+              <img
+                src="images-videos/mahtab.jpg"
+                alt="Mahtabul Al Nahian"
+                class="w-24 h-24 rounded-full object-cover border-2 border-purple-500 shadow-lg"
+              />
             </div>
           </div>
 
-          <!-- Team Member 4 -->
-          <div class="team-member-card">
-            <h3 class="font-moonscape text-xl text-white mb-2">Nabila Rahman Rodela</h3>
-            <p class="font-sansation text-purple-400 mb-4">Chief Marketing Officer</p>
-            <p class="font-sansation text-gray-300 mb-4">Leads marketing and branding.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">SQL</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">SEO</span>
+          <!-- Team Member 4: Nabila Rahman Rodela -->
+          <div
+            class="team-member-card group flex items-start justify-between overflow-hidden"
+            onclick="toggleMemberCard(this)"
+          >
+            <div class="flex-1 min-w-0">
+              <h3
+                class="font-moonscape text-xl text-white mb-2 group-hover:text-purple-400 transition-colors"
+              >
+                Nabila Rahman Rodela
+              </h3>
+              <p class="font-sansation text-purple-400 mb-2">
+                Chief Marketing Officer
+              </p>
+
+              <div class="member-details-wrapper">
+                <p class="font-sansation text-gray-300 mb-4 text-sm">
+                  Leads marketing and branding.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >SQL</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >SEO</span
+                  >
+                </div>
+                <div>
+                  <a
+                    href="#"
+                    class="inline-block text-purple-400 hover:text-white font-sansation text-sm underline decoration-purple-500 decoration-2 underline-offset-4"
+                    onclick="event.stopPropagation()"
+                  >
+                    View Portfolio
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="text-xs text-gray-500 mt-2 italic group-hover:text-gray-400 transition-colors member-hint"
+              >
+                Click to expand
+              </div>
+            </div>
+
+            <div class="member-image-wrapper shrink-0">
+              <img
+                src="images-videos/unleft_logo.png"
+                alt="Nabila Rahman Rodela"
+                class="w-24 h-24 rounded-full object-cover border-2 border-purple-500 shadow-lg bg-gray-800 p-2"
+              />
             </div>
           </div>
 
-          <!-- Team Member 5 -->
-          <div class="team-member-card">
-            <h3 class="font-moonscape text-xl text-white mb-2">Tafrim Ahmed</h3>
-            <p class="font-sansation text-purple-400 mb-4">Chief Logic Operator</p>
-            <p class="font-sansation text-gray-300 mb-4">Ensures reliability with robust mathematical and logical programming.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">JavaScript</span>
+          <!-- Team Member 5: Tafrim Ahmed -->
+          <div
+            class="team-member-card group flex items-start justify-between overflow-hidden"
+            onclick="toggleMemberCard(this)"
+          >
+            <div class="flex-1 min-w-0">
+              <h3
+                class="font-moonscape text-xl text-white mb-2 group-hover:text-purple-400 transition-colors"
+              >
+                Tafrim Ahmed
+              </h3>
+              <p class="font-sansation text-purple-400 mb-2">
+                Chief Logic Operator
+              </p>
+
+              <div class="member-details-wrapper">
+                <p class="font-sansation text-gray-300 mb-4 text-sm">
+                  Ensures reliability with robust programming.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >JavaScript</span
+                  >
+                </div>
+                <div>
+                  <a
+                    href="tafrim.html"
+                    class="inline-block text-purple-400 hover:text-white font-sansation text-sm underline decoration-purple-500 decoration-2 underline-offset-4"
+                    onclick="event.stopPropagation()"
+                  >
+                    View Portfolio
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="text-xs text-gray-500 mt-2 italic group-hover:text-gray-400 transition-colors member-hint"
+              >
+                Click to expand
+              </div>
+            </div>
+
+            <div class="member-image-wrapper shrink-0">
+              <img
+                src="images-videos/tafrim.jpg"
+                alt="Tafrim Ahmed"
+                class="w-24 h-24 rounded-full object-cover border-2 border-purple-500 shadow-lg"
+              />
             </div>
           </div>
 
-          <!-- Team Member 6 -->
-          <div class="team-member-card">
-            <h3 class="font-moonscape text-xl text-white mb-2">Al Imran Atik</h3>
-            <p class="font-sansation text-purple-400 mb-4">Executive Controlling Officer</p>
-            <p class="font-sansation text-gray-300 mb-4">Automates delivery pipelines and infrastructure at scale.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">JavaScript</span>
-            </div>
-          </div>
+          <!-- Team Member 6: Golam Morshed Eashan -->
+          <div
+            class="team-member-card group flex items-start justify-between overflow-hidden"
+            onclick="toggleMemberCard(this)"
+          >
+            <div class="flex-1 min-w-0">
+              <h3
+                class="font-moonscape text-xl text-white mb-2 group-hover:text-purple-400 transition-colors"
+              >
+                Golam Morshed Eashan
+              </h3>
+              <p class="font-sansation text-purple-400 mb-2">
+                Executive Controlling Officer
+              </p>
 
-          <!-- Team Member 7 -->
-          <div class="team-member-card">
-            <h3 class="font-moonscape text-xl text-white mb-2">Golam Morshed Eashan</h3>
-            <p class="font-sansation text-purple-400 mb-4">Executive Controlling Officer</p>
-            <p class="font-sansation text-gray-300 mb-4">Controls entire operation, ultimate decision maker.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">HTML</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">CSS</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Python</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Django</span>
-              <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">C#</span>
+              <div class="member-details-wrapper">
+                <p class="font-sansation text-gray-300 mb-4 text-sm">
+                  Controls operation, decision maker.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >Python</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >Django</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                    >C#</span
+                  >
+                </div>
+                <div>
+                  <a
+                    href="eashan.html"
+                    class="inline-block text-purple-400 hover:text-white font-sansation text-sm underline decoration-purple-500 decoration-2 underline-offset-4"
+                    onclick="event.stopPropagation()"
+                  >
+                    View Portfolio
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="text-xs text-gray-500 mt-2 italic group-hover:text-gray-400 transition-colors member-hint"
+              >
+                Click to expand
+              </div>
+            </div>
+
+            <div class="member-image-wrapper shrink-0">
+              <img
+                src="images-videos/eashan.jpg"
+                alt="Golam Morshed Eashan"
+                class="w-24 h-24 rounded-full object-cover border-2 border-purple-500 shadow-lg"
+              />
             </div>
           </div>
         </div>
@@ -943,9 +1110,13 @@
     <section id="contact" class="section-with-stars py-20 px-6 md:px-12">
       <div class="container mx-auto">
         <div class="text-center mb-16">
-          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">Have a Project in Mind?</h2>
+          <h2 class="font-moonscape text-4xl md:text-5xl text-white mb-4">
+            Have a Project in Mind?
+          </h2>
           <p class="font-sansation text-xl text-gray-300 max-w-2xl mx-auto">
-            Let's transform your ideas into reality. Our team is ready to bring your vision to life with cutting-edge technology and innovative solutions.
+            Let's transform your ideas into reality. Our team is ready to bring
+            your vision to life with cutting-edge technology and innovative
+            solutions.
           </p>
         </div>
 
@@ -954,40 +1125,84 @@
             <!-- Contact Info -->
             <div>
               <div class="bg-gray-800/50 rounded-xl p-8 mb-8">
-                <h3 class="font-moonscape text-2xl text-white mb-6">Get in Touch</h3>
+                <h3 class="font-moonscape text-2xl text-white mb-6">
+                  Get in Touch
+                </h3>
                 <div class="space-y-6">
                   <div class="flex items-start">
                     <div class="bg-purple-900/30 p-3 rounded-lg mr-4">
-                      <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      <svg
+                        class="w-6 h-6 text-purple-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                        />
                       </svg>
                     </div>
                     <div>
-                      <h4 class="font-moonscape text-lg text-white mb-1">Chat with us</h4>
+                      <h4 class="font-moonscape text-lg text-white mb-1">
+                        Chat with us
+                      </h4>
                       <p class="font-sansation text-gray-300">Live support</p>
                     </div>
                   </div>
                   <div class="flex items-start">
                     <div class="bg-blue-900/30 p-3 rounded-lg mr-4">
-                      <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      <svg
+                        class="w-6 h-6 text-blue-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
                       </svg>
                     </div>
                     <div>
-                      <h4 class="font-moonscape text-lg text-white mb-1">Email us</h4>
-                      <p class="font-sansation text-gray-300">info@unleft.com</p>
+                      <h4 class="font-moonscape text-lg text-white mb-1">
+                        Email us
+                      </h4>
+                      <p class="font-sansation text-gray-300">
+                        info@unleft.com
+                      </p>
                     </div>
                   </div>
                   <div class="flex items-start">
                     <div class="bg-green-900/30 p-3 rounded-lg mr-4">
-                      <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      <svg
+                        class="w-6 h-6 text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                        />
                       </svg>
                     </div>
                     <div>
-                      <h4 class="font-moonscape text-lg text-white mb-1">Call us</h4>
-                      <p class="font-sansation text-gray-300">+1 (555) 123-4567</p>
-                      <p class="font-sansation text-sm text-gray-400 mt-1">Available 24/7 for support</p>
+                      <h4 class="font-moonscape text-lg text-white mb-1">
+                        Call us
+                      </h4>
+                      <p class="font-sansation text-gray-300">
+                        +1 (555) 123-4567
+                      </p>
+                      <p class="font-sansation text-sm text-gray-400 mt-1">
+                        Available 24/7 for support
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -997,21 +1212,42 @@
             <!-- Contact Form -->
             <div>
               <div class="bg-gray-800/50 rounded-xl p-8">
-                <h3 class="font-moonscape text-2xl text-white mb-6">Send us a Message</h3>
+                <h3 class="font-moonscape text-2xl text-white mb-6">
+                  Send us a Message
+                </h3>
                 <form class="space-y-6">
                   <div>
-                    <input type="text" placeholder="Your Name" class="contact-input" />
+                    <input
+                      type="text"
+                      placeholder="Your Name"
+                      class="contact-input"
+                    />
                   </div>
                   <div>
-                    <input type="email" placeholder="Your Email" class="contact-input" />
+                    <input
+                      type="email"
+                      placeholder="Your Email"
+                      class="contact-input"
+                    />
                   </div>
                   <div>
-                    <input type="text" placeholder="Subject" class="contact-input" />
+                    <input
+                      type="text"
+                      placeholder="Subject"
+                      class="contact-input"
+                    />
                   </div>
                   <div>
-                    <textarea placeholder="Your Message" rows="4" class="contact-input"></textarea>
+                    <textarea
+                      placeholder="Your Message"
+                      rows="4"
+                      class="contact-input"
+                    ></textarea>
                   </div>
-                  <button type="submit" class="btn-primary w-full py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white">
+                  <button
+                    type="submit"
+                    class="btn-primary w-full py-3 px-8 rounded-lg font-sansation font-bold text-lg text-white"
+                  >
                     Let's Talk
                   </button>
                 </form>
@@ -1030,7 +1266,8 @@
           <div>
             <h3 class="font-audiowide text-2xl text-white mb-4">UNLEFT LLC</h3>
             <p class="font-sansation text-gray-300">
-              Powering digital possibilities through innovative web solutions and cutting-edge technology.
+              Powering digital possibilities through innovative web solutions
+              and cutting-edge technology.
             </p>
           </div>
 
@@ -1051,8 +1288,18 @@
           <div>
             <h4 class="font-moonscape text-lg text-white mb-4">Our Projects</h4>
             <div class="space-y-2">
-              <a href="https://mrbikebd.com" target="_blank" class="footer-link block">mrbikebd.com</a>
-              <a href="https://wishmaker.shop" target="_blank" class="footer-link block">wishmaker.shop</a>
+              <a
+                href="https://mrbikebd.com"
+                target="_blank"
+                class="footer-link block"
+                >mrbikebd.com</a
+              >
+              <a
+                href="https://wishmaker.shop"
+                target="_blank"
+                class="footer-link block"
+                >wishmaker.shop</a
+              >
             </div>
           </div>
 
@@ -1062,191 +1309,34 @@
             <div class="space-y-3">
               <p class="font-sansation text-gray-300">info@unleft.com</p>
               <p class="font-sansation text-gray-300">+1 (555) 123-4567</p>
-              <p class="font-sansation text-sm text-gray-400">Available 24/7 for support</p>
+              <p class="font-sansation text-sm text-gray-400">
+                Available 24/7 for support
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Legal -->
-        <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+        <div
+          class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+        >
           <p class="font-sansation text-gray-400 mb-4 md:mb-0">
             © 2025 UNLEFT LLC. All rights reserved.
           </p>
           <div class="flex space-x-6">
-            <a href="#" class="font-sansation text-gray-400 hover:text-white">Privacy Policy</a>
-            <a href="#" class="font-sansation text-gray-400 hover:text-white">Terms of Service</a>
-            <a href="#" class="font-sansation text-gray-400 hover:text-white">Cookies</a>
+            <a href="#" class="font-sansation text-gray-400 hover:text-white"
+              >Privacy Policy</a
+            >
+            <a href="#" class="font-sansation text-gray-400 hover:text-white"
+              >Terms of Service</a
+            >
+            <a href="#" class="font-sansation text-gray-400 hover:text-white"
+              >Cookies</a
+            >
           </div>
         </div>
       </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script>
-      // DOM elements
-      const loadingScreen = document.getElementById("loading-screen");
-      const heroVideo = document.getElementById("hero-video");
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const starryBackground = document.getElementById("starry-background");
-
-      // Starry background with mouse repulsion
-      function createStarryBackground() {
-        const stars = [];
-        const starCount = 150;
-        
-        // Create stars
-        for (let i = 0; i < starCount; i++) {
-          const star = document.createElement("div");
-          star.className = "star";
-          
-          // Random size (1-3px)
-          const size = Math.random() * 2 + 1;
-          star.style.width = `${size}px`;
-          star.style.height = `${size}px`;
-          
-          // Random position
-          star.style.left = `${Math.random() * 100}%`;
-          star.style.top = `${Math.random() * 100}%`;
-          
-          // Random opacity
-          star.style.opacity = Math.random() * 0.7 + 0.3;
-          
-          // Random twinkle animation
-          star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite alternate`;
-          
-          starryBackground.appendChild(star);
-          stars.push({
-            element: star,
-            x: parseFloat(star.style.left),
-            y: parseFloat(star.style.top),
-            vx: 0,
-            vy: 0,
-            originalX: parseFloat(star.style.left),
-            originalY: parseFloat(star.style.top)
-          });
-        }
-        
-        // Mouse movement effect
-        let mouseX = 0;
-        let mouseY = 0;
-        const repulsionStrength = 0.05;
-        const returnStrength = 0.02;
-        
-        document.addEventListener("mousemove", (e) => {
-          mouseX = (e.clientX / window.innerWidth) * 100;
-          mouseY = (e.clientY / window.innerHeight) * 100;
-        });
-        
-        // Animation loop
-        function animateStars() {
-          stars.forEach(star => {
-            // Calculate distance to mouse
-            const dx = star.x - mouseX;
-            const dy = star.y - mouseY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            // Apply repulsion force
-            if (distance < 20) {
-              const force = (20 - distance) / 20;
-              star.vx += (dx / distance) * force * repulsionStrength;
-              star.vy += (dy / distance) * force * repulsionStrength;
-            }
-            
-            // Return to original position
-            star.vx += (star.originalX - star.x) * returnStrength;
-            star.vy += (star.originalY - star.y) * returnStrength;
-            
-            // Apply velocity with damping
-            star.vx *= 0.95;
-            star.vy *= 0.95;
-            
-            // Update position
-            star.x += star.vx;
-            star.y += star.vy;
-            
-            // Apply boundaries
-            star.x = Math.max(0, Math.min(100, star.x));
-            star.y = Math.max(0, Math.min(100, star.y));
-            
-            // Update element
-            star.element.style.left = `${star.x}%`;
-            star.element.style.top = `${star.y}%`;
-          });
-          
-          requestAnimationFrame(animateStars);
-        }
-        
-        animateStars();
-      }
-
-      // Hide loading screen when video is loaded
-      window.addEventListener("load", function () {
-        // Simulate loading time for demonstration
-        setTimeout(function () {
-          loadingScreen.style.opacity = "0";
-          setTimeout(function () {
-            loadingScreen.style.display = "none";
-          }, 500);
-        }, 2000);
-        
-        // Create starry background
-        createStarryBackground();
-      });
-
-      // Video loaded event
-      heroVideo.addEventListener("loadeddata", function () {
-        console.log("Hero video loaded successfully");
-      });
-
-      // Video error handling
-      heroVideo.addEventListener("error", function () {
-        console.log("Error loading video, using fallback background");
-        // Fallback background if video fails to load
-        document.querySelector(".hero-video").style.display = "none";
-        document.querySelector(".hero-overlay").style.background =
-          "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)";
-      });
-
-      // Mobile menu toggle
-      mobileMenuButton.addEventListener("click", function () {
-        mobileMenu.classList.toggle("hidden");
-      });
-
-      // Close mobile menu when clicking a link
-      document.querySelectorAll("#mobile-menu a").forEach((link) => {
-        link.addEventListener("click", function () {
-          mobileMenu.classList.add("hidden");
-        });
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-
-      // Navbar background on scroll
-      window.addEventListener("scroll", function () {
-        const navbar = document.querySelector("nav");
-        if (window.scrollY > 50) {
-          navbar.classList.add("navbar");
-        } else {
-          navbar.classList.remove("navbar");
-        }
-      });
-    </script>
+    <script src="js/index.js"></script>
   </body>
 </html>
