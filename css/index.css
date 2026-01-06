@@ -110,18 +110,6 @@
   animation: meteorThroughCenter 2.4s cubic-bezier(0.1, 0, 0.1, 1) forwards;
 }
 
-.animate-meteor-center1 {
-  top: 40%;
-  left: 45%;
-  animation: meteorThroughCenter 2.4s cubic-bezier(0.1, 0, 0.1, 1) forwards;
-}
-
-.animate-meteor-center2 {
-  top: 40%;
-  left: 40%;
-  animation: meteorThroughCenter 2.4s cubic-bezier(0.1, 0, 0.1, 1) forwards;
-}
-
 /* Custom button styles */
 .btn-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
