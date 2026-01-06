@@ -173,7 +173,7 @@ function initConstellationBackground() {
       // Faint lines
       ctx.beginPath();
       ctx.strokeStyle = constellation.color;
-      ctx.lineWidth = 0.6;
+      ctx.lineWidth = 0.8;
       constellation.connections.forEach(([startIdx, endIdx]) => {
         ctx.moveTo(points[startIdx].x, points[startIdx].y);
         ctx.lineTo(points[endIdx].x, points[endIdx].y);
